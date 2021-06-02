@@ -1,19 +1,8 @@
-# next-nest-graphql-starter-template
+# apollo-next-SSG-sample
 
 ### 使用技術
 
-###
+apollo を使った Next.js での SSG の sample
 
-- Next.js
-- TypeScript
-- GraphQL
-- Apollo Client
-- GraphQL Code Generator
-- ESLint
-- prettier
-
-###
-
-- Nest.js
-- GraphQL
-- Apollo Server
+↓ ここから編集
+https://github.com/tokio-k/next-nest-graphql-starter-template
