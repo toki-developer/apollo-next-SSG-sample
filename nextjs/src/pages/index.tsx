@@ -2,7 +2,7 @@ import gql from "graphql-tag";
 import { useSampleQuery } from "src/apollo/graphql";
 
 const Home = () => {
-  const { data, loading } = useSampleQuery({ variables: { id: 2 } });
+  const { data, loading } = useSampleQuery({ variables: { id: "45268" } });
   return (
     <>
       {!loading && (
@@ -20,7 +20,7 @@ const Home = () => {
 export default Home;
 
 gql`
-  query sample($id: Int!) {
+  query sample($id: String!) {
     sample(id: $id) {
       id
       name

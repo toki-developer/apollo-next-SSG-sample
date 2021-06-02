@@ -17,22 +17,34 @@ export type Scalars = {
 export type Query = {
   __typename?: 'Query';
   sample?: Maybe<SampleModel>;
+  getDatas?: Maybe<Array<SampleModel>>;
 };
 
 
 export type QuerySampleArgs = {
-  id: Scalars['Int'];
+  id: Scalars['String'];
 };
 
 export type SampleModel = {
   __typename?: 'SampleModel';
-  id: Scalars['Int'];
+  id: Scalars['String'];
   name: Scalars['String'];
   freeInput: Scalars['String'];
 };
 
+export type SampleGetIdQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type SampleGetIdQuery = (
+  { __typename?: 'Query' }
+  & { getDatas?: Maybe<Array<(
+    { __typename?: 'SampleModel' }
+    & Pick<SampleModel, 'id'>
+  )>> }
+);
+
 export type SampleQueryVariables = Exact<{
-  id: Scalars['Int'];
+  id: Scalars['String'];
 }>;
 
 
@@ -45,8 +57,42 @@ export type SampleQuery = (
 );
 
 
+export const SampleGetIdDocument = gql`
+    query sampleGetId {
+  getDatas {
+    id
+  }
+}
+    `;
+
+/**
+ * __useSampleGetIdQuery__
+ *
+ * To run a query within a React component, call `useSampleGetIdQuery` and pass it any options that fit your needs.
+ * When your component renders, `useSampleGetIdQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useSampleGetIdQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useSampleGetIdQuery(baseOptions?: Apollo.QueryHookOptions<SampleGetIdQuery, SampleGetIdQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<SampleGetIdQuery, SampleGetIdQueryVariables>(SampleGetIdDocument, options);
+      }
+export function useSampleGetIdLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<SampleGetIdQuery, SampleGetIdQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<SampleGetIdQuery, SampleGetIdQueryVariables>(SampleGetIdDocument, options);
+        }
+export type SampleGetIdQueryHookResult = ReturnType<typeof useSampleGetIdQuery>;
+export type SampleGetIdLazyQueryHookResult = ReturnType<typeof useSampleGetIdLazyQuery>;
+export type SampleGetIdQueryResult = Apollo.QueryResult<SampleGetIdQuery, SampleGetIdQueryVariables>;
 export const SampleDocument = gql`
-    query sample($id: Int!) {
+    query sample($id: String!) {
   sample(id: $id) {
     id
     name
