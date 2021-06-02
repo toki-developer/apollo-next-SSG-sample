@@ -11,3 +11,6 @@ https://github.com/tokio-k/next-nest-graphql-starter-template
 
 - src/apollo/apolloClient.ts
 - src/pages/[id].tsx
+
+参考
+https://github.com/vercel/next.js/blob/canary/examples/with-apollo/lib/apolloClient.js
